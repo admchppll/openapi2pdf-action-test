@@ -10,7 +10,7 @@ jobs:
 
       - name: Run the action
         id: run
-        uses: admchppll/openapi2pdf@v1.1.0-alpha
+        uses: admchppll/openapi2pdf@v1.1.2-alpha
         with:
           spec: ./openapi-3.1.json
           out: ./test.pdf
