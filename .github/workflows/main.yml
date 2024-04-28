@@ -12,8 +12,8 @@ jobs:
         id: run
         uses: admchppll/openapi2pdf@v1.1.0-alpha
         with:
-          spec: 'openapi-3.1.json'
-          out: 'test.pdf'
+          spec: ./openapi-3.1.json
+          out: ./test.pdf
       
       - name: Get the output variables
         run: echo "The output path is ${{ steps.run.outputs.output-file }}"
@@ -24,4 +24,4 @@ jobs:
           name: output
           path: test.pdf
           if-no-files-found: error
-          retention-dats: 30
+          retention-days: 30
