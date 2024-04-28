@@ -1,0 +1,27 @@
+on: [push, workflow_dispatch]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Test using the action
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: Run the action
+        id: run
+        uses: admchppll/openapi2pdf@v1.1.0-alpha
+        with:
+          spec: 'openapi-3.1.json'
+          out: 'test.pdf'
+      
+      - name: Get the output variables
+        run: echo "The output path is ${{ steps.run.outputs.output-file }}"
+
+      - name: Upload output
+        uses: actions/upload-artifact@v4
+        with:
+          name: output
+          path: test.pdf
+          if-no-files-found: error
+          retention-dats: 30
